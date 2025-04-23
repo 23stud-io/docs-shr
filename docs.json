@@ -4,8 +4,8 @@
   "name": "Documentation | Shroomy",
   "colors": {
     "primary": "#DA5597",
-    "light": "#DA5597",
-    "dark": "#ECAACB"
+    "light": "#ECAACB",
+    "dark": "#DA5597"
   },
   "favicon": "/favicon.svg",
   "navigation": {
@@ -36,7 +36,7 @@
         {
           "anchor": "Application",
           "href": "https://app.shroomy.io/",
-          "icon": "application"
+          "icon": "globe"
         }
       ]
     }
