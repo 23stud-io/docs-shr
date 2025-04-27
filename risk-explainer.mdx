@@ -1,0 +1,71 @@
+---
+title: 'Risk Explainer'
+description: 'Understand the risks associated with the ShroomyProject protocol'
+---
+
+## Introduction
+
+The ShroomyProject Protocol is designed with risk management as a core principle. This documentation outlines the key risks associated with the protocol and the mechanisms implemented to mitigate them. Understanding these risks is essential for all participants in the ShroomyProject ecosystem.
+
+## Risk Parameters
+
+### Health Factor
+
+The health factor is a critical metric that represents the safety of a user's position relative to the liquidation threshold:
+
+```
+Health Factor = Total Collateral Value in ETH * Liquidation Threshold / Total Borrows in ETH
+```
+
+- A health factor above 1 means the position is safe
+- A health factor below 1 makes the position eligible for liquidation
+- Users should maintain a buffer above 1 to account for market volatility
+
+### Loan-to-Value (LTV)
+
+The maximum loan-to-value ratio determines how much a user can borrow relative to their collateral:
+
+```
+Maximum Borrow Amount = Collateral Value * Maximum LTV
+```
+
+Each asset has its own maximum LTV, reflecting its risk profile.
+
+### Liquidation Threshold
+
+The liquidation threshold is the percentage at which a position becomes undercollateralized:
+
+```
+Liquidation Threshold = Total Borrows in ETH / Total Collateral Value in ETH
+```
+
+This is typically set higher than the maximum LTV to provide a safety buffer.
+
+### Liquidation Bonus
+
+The liquidation bonus is the discount liquidators receive when purchasing collateral during a liquidation event. This incentivizes rapid restoration of protocol health.
+
+## Risk Management Best Practices
+
+### For Depositors
+
+- Diversify across assets to reduce exposure to individual asset volatility
+- Be aware of the risks associated with each asset pool
+- Monitor governance proposals that may affect risk parameters
+
+### For Borrowers
+
+- Maintain a healthy buffer above the minimum health factor
+- Set up monitoring and alerts for your positions
+- Consider hedging strategies for volatile assets
+- Be prepared for potential liquidations during market downturns
+
+### For Liquidators
+
+- Calculate profitability carefully, accounting for gas costs
+- Develop efficient liquidation strategies
+- Monitor for liquidation opportunities across multiple assets
+
+## Conclusion
+
+Risk management is a shared responsibility among all participants in the ShroomyProject ecosystem. By understanding these risks and following best practices, users can make informed decisions while contributing to the overall stability and success of the protocol.

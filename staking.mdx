@@ -1,0 +1,63 @@
+---
+title: 'Staking'
+description: 'Understand the staking mechanism of the ShroomyProject protocol'
+---
+
+The ShroomyProject staking mechanism is a core component of the protocol's economic model, designed to incentivize token holders who actively participate in securing and governing the ecosystem. By staking SHR tokens (the native token of ShroomyProject), participants receive protocol-derived incentives and gain governance rights proportional to their stake.
+
+## Key Benefits
+
+- **Protocol Incentives**: Earn protocol-derived incentives proportional to your staked amount
+- **Native Asset Rewards**: Receive rewards in the same assets distributed by the protocol
+- **Protocol Governance**: Participate in governance decisions that shape the future of ShroomyProject
+- **Economic Alignment**: Align your interests with the long-term success of the protocol
+
+## Staking Mechanism
+
+### How Staking Works
+
+1. **Deposit**: Users deposit SHR tokens into the staking contract
+2. **Lock Period Selection**: Users must choose one of the available lock durations: 7, 30, 60, or 90 days
+3. **Incentive Accrual**: Stakers earn their proportional share of the 50% of protocol fees allocated to the staking contract
+4. **Epoch-Based Distribution**: Incentives are calculated and distributed in 24-hour epochs
+5. **Claiming**: Accrued incentives can be claimed at any time, independent of the lock period
+
+### Native Asset Distribution
+
+A unique feature of ShroomyProject staking is that rewards maintain their original form:
+
+- Rewards are distributed in the same assets in which they were generated
+- If the protocol earns `WETH`, stakers receive `WETH`
+- If the protocol earns `kBTC`, stakers receive `kBTC`
+- This applies to all supported assets within the ecosystem
+
+This approach provides stakers with a diverse basket of digital assets rather than a single token, creating natural portfolio diversification.
+
+## Staking Parameters
+
+### Lock Periods
+
+ShroomyProject offers four fixed staking lock periods:
+- **7 days**: Short-term staking option
+- **30 days**: Medium-term staking option
+- **60 days**: Extended staking option
+- **90 days**: Long-term staking option
+
+Each lock period represents a commitment to keep your tokens staked for the specified duration. During this period, tokens cannot be withdrawn, but continue to earn incentives.
+
+### Epoch Structure
+
+- **Epoch Duration**: 24 hours
+- **Distribution Calculation**: Protocol fee distribution calculations occur at the end of each epoch
+- **Incentive Accrual**: Incentives earned during an epoch become claimable immediately after epoch completion
+- **Daily Claiming**: Users can claim accrued incentives after each epoch
+
+## Claiming Incentives
+
+### Daily Claiming
+
+- **Daily Availability**: New incentives become available for claiming after each 24-hour epoch
+- **Claim Frequency**: Users can claim their accrued incentives daily as soon as an epoch completes
+- **No Lock-up**: Claimed incentives are transferred immediately to the user's wallet
+- **Flexibility**: While daily claiming is available, users can choose to claim less frequently if desired
+
