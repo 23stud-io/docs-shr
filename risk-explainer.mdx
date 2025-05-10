@@ -7,6 +7,69 @@ description: 'Understand the risks associated with the Shroomy Protocol'
 
 The Shroomy Protocol is designed with risk management as a core principle. This documentation outlines the key risks associated with the protocol and the mechanisms implemented to mitigate them. Understanding these risks is essential for all participants in the Shroomy Project ecosystem.
 
+## Risk Types
+
+### Smart Contract Risk
+
+Smart contract risk refers to the potential for vulnerabilities in the protocol's code that could lead to unexpected behavior or loss of funds. To mitigate this risk, ShroomyProject implements:
+
+- Multiple independent security audits before deployment
+- Formal verification of critical components
+- Bug bounty programs to incentivize responsible disclosure
+- Progressive decentralization of governance
+
+### Market Risk
+
+Market risk relates to the volatility of crypto assets and how this affects the protocol's stability.
+
+#### Collateral Value Fluctuations
+
+The value of assets used as collateral can experience significant price volatility. ShroomyProject mitigates this through:
+
+- Diversified collateral types
+- Conservative loan-to-value (LTV) ratios
+- Real-time price feeds via oracle networks
+- Risk parameters that are asset-specific
+
+#### Liquidations
+
+When a borrower's health factor falls below 1, their position becomes eligible for liquidation. This process ensures the protocol remains solvent even during extreme market conditions:
+
+- Liquidators repay a portion of the outstanding debt
+- In return, they receive discounted collateral (liquidation bonus)
+- Gas costs must be considered when evaluating liquidation profitability
+
+### Liquidity Risk
+
+Liquidity risk concerns the availability of assets in the protocol for withdrawals and liquidations.
+
+#### Utilization Rate
+
+The utilization rate represents the percentage of supplied assets that are currently being borrowed. ShroomyProject implements:
+
+- Interest rate models that incentivize optimal utilization
+- Borrow caps to limit exposure to individual assets
+- Supply caps to manage protocol growth
+
+#### Reserve Factor
+
+A portion of the interest paid by borrowers is set aside as a reserve for the protocol. This creates a safety buffer against potential shortfalls and supports long-term sustainability.
+
+#### Oracle Risk
+
+Shroomy Project relies on price oracles to determine the value of assets within the protocol. Risks include:
+
+- Data manipulation attacks
+- Temporary market dislocations
+- Technical failures
+
+Mitigations include:
+
+- Multiple independent oracle providers
+- Time-weighted average prices
+- Circuit breakers for extreme price movements
+- Fallback mechanisms
+
 ## Risk Parameters
 
 ### Health Factor
