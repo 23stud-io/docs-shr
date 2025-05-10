@@ -1,9 +1,9 @@
 ---
 title: 'Liquidations'
-description: 'Learn how liquidations work in ShroomyProject'
+description: 'Learn how liquidations work in Shroomy Project'
 ---
 
-The overall stability of the ShroomyProject Protocol relies heavily on the robustness of the collateralized positions within the ecosystem, which is measured by what we call the `health factor`. When a user's account falls below a health factor of 1, the position becomes eligible for liquidation.
+The overall stability of the Shroomy Protocol relies heavily on the robustness of the collateralized positions within the ecosystem, which is measured by what we call the `health factor`. When a user's account falls below a health factor of 1, the position becomes eligible for liquidation.
 
 In the event that an account's health factor drops below the threshold of 1, any external party can initiate a `liquidationCall()` function to either the `Pool` or `L2Pool` contract (for Layer 2 networks). This process allows the liquidator to repay a portion of the outstanding debt and receive discounted collateral in return, known as the `liquidation bonus`.
 
