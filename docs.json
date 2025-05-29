@@ -26,12 +26,6 @@
         ]
       }
     ],
-    "anchors": [
-      {
-        "anchor": "Audit",
-        "href": "https://docs.shroomy.io/reports/Security_Review_Retest_Report_Shroomy_Staking.pdf"
-      }
-    ],
     "global": {
       "anchors": [
         {
@@ -43,6 +37,11 @@
           "anchor": "Application",
           "href": "https://app.shroomy.io/",
           "icon": "globe"
+        },
+        {
+          "anchor": "Audit",
+          "href": "https://docs.shroomy.io/reports/Security_Review_Retest_Report_Shroomy_Staking.pdf",
+          "icon": "shield"
         }
       ]
     }
