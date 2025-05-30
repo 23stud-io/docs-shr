@@ -20,7 +20,10 @@
               "liquidations",
               "staking",
               "revenue-distribution",
-              "risk-explainer"
+              "risk-explainer",
+              "locker",
+              "airdrop",
+              "contracts"
             ]
           }
         ]

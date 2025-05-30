@@ -1,0 +1,52 @@
+---
+title: 'Airdrop'
+description: 'Understand the airdrop tooling of the Shroomy Protocol'
+---
+
+The Airdrop Tooling feature allows users to distribute ERC-20 tokens to multiple addresses efficiently. Users can choose between a fixed amount airdrop, where all recipients receive the same token amount, or a variable amount airdrop, where amounts are specified via an uploaded CSV file. The system is designed to be user-friendly and secure, with clear feedback on airdrop execution.
+
+## Supported Tokens
+
+- ERC-20 Tokens: Fungible tokens on the Ink chain are supported for both fixed and variable amount airdrops.
+
+## Airdrop Types
+
+### Fixed Amount Airdrop
+
+- All specified addresses receive the same amount of tokens.
+- Users manually input:
+  - The token contract address.
+  - The fixed amount of tokens per address.
+- A list of recipient addresses (entered manually or uploaded via CSV).
+- Suitable for uniform distributions, such as community rewards or promotional campaigns.
+
+### Variable Amount Airdrop
+
+- Each address can receive a different amount of tokens, as specified in an uploaded CSV file.
+- Users provide:
+  - The token contract address.
+  - A CSV file containing recipient addresses and corresponding token amounts.
+- Suitable for customized distributions, such as tiered rewards or vesting payouts.
+
+## CSV File Requirements (Variable Airdrop)
+
+For variable amount airdrops, users must upload a CSV file with the following format:
+
+- Columns:
+  - `address`: The recipient's Ink chain address (must be a valid address).
+  - `amount`: The token amount to send to the address (in the human-readable format, e.g., `1` for `1 ETH`).
+
+Example:
+
+```csv
+address,amount
+0x123...abc,1000000000000000000
+0x456...def,500000000000000000
+```
+
+- Requirements:
+  - The file must be in `.csv` format.
+  - The first row must contain the headers address and amount.
+  - All addresses must be valid Ink chain addresses.
+  - Amounts must be positive integers or decimals compatible with the token's decimals.
+- The UI validates the CSV file before allowing airdrop execution.
