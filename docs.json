@@ -45,6 +45,11 @@
           "anchor": "Audit",
           "href": "https://app.shroomy.io/reports/Security_Review_Retest_Report_Shroomy_Staking.pdf",
           "icon": "shield"
+        },
+        {
+          "anchor": "Brand Kit",
+          "href": "https://app.shroomy.io/shroomy-brand-kit.pdf",
+          "icon": "brush"
         }
       ]
     }
