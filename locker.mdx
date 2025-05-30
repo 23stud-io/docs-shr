@@ -1,0 +1,69 @@
+---
+title: 'Locker'
+description: 'Understand the locker mechanism of the Shroomy Protocol'
+---
+
+The Locker feature enables users to lock ERC-20 or ERC-721 tokens on the Ink chain for a specified duration. Users can choose between a standard lock or a linear unlock (for ERC-20 tokens only) and select from a variety of lock durations. The system mints a proof-of-lock NFT to track locked tokens and supports advanced features like governance integration, lock extension, and ownership transfer.
+
+## Supported Tokens
+
+- ERC-20 Tokens: Fungible tokens supported for both standard and linear unlock mechanisms.
+- ERC-721 Tokens [coming soon]: Non-fungible tokens (NFTs) supported for standard lock only.
+
+## Locking Options
+
+### Standard Lock
+
+- Tokens are locked for the entire selected duration.
+- Tokens are released in full upon the lock's expiration.
+- Available for both ERC-20 and ERC-721 tokens.
+
+### Linear Unlock (ERC-20 Only)
+
+- Tokens are gradually unlocked over time, proportional to the elapsed duration.
+- Users can withdraw available tokens at any time.
+- Example: For a 1-year linear unlock, after 6 months, 50% of the tokens are available for withdrawal.
+
+## Lock Durations
+
+Users can choose from the following lock durations:
+
+- 7 days
+- 14 days
+- 1 month
+- 3 months
+- 6 months
+- 9 months
+- 1 year
+- 2 years
+- 3 years
+- 4 years
+- Forever (permanent lock)
+
+## Proof-of-Lock NFT
+
+Upon locking tokens, a proof-of-lock NFT is minted to the user's wallet.
+
+This NFT tracks the locked tokens and their value, ensuring compatibility with wallet interfaces.
+
+## Lock Management
+
+### Extend Lock Duration
+
+- Users can extend an existing lock by selecting from the same durations listed in Lock Durations (#lock-durations).
+- The extension applies to the existing lock without requiring a new lock creation.
+
+### Transfer Lock Ownership
+
+- Users can transfer ownership of a lock to another address.
+- This feature allows flexibility for users to delegate or reassign locked tokens.
+
+## Emergency Unlocking
+
+In case the web UI is unavailable, users can unlock or claim their tokens by interacting directly with the smart contract via a blockchain explorer. Follow these steps:
+
+- Navigate to the Ink chain explorer.
+- Locate the Locker contract address (available in the official documentation or support channels).
+- Interact with the contract's unlock or claim functions, providing the necessary parameters (e.g., lock ID).
+- Ensure you have sufficient gas for the transaction.
+
