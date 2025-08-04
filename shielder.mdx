@@ -5,6 +5,8 @@ description: "Understand the shielding process of the Shroomy Protocol"
 
 The Shielder feature enables users to move ERC-20 tokens from their public wallets into a private balance. Once shielded, assets can be used in DeFi applications with enhanced privacy. The shielding mechanism utilizes zero-knowledge proofs and Merkle Tree commitments to ensure user anonymity and transaction confidentiality.
 
+**Powered by [RAILGUN](https://railgun.org/) - On-chain ZK Privacy for DeFi**
+
 ## What is ZKP (Zero-Knowledge Proof)?
 
 Zero-Knowledge Proofs (ZKPs) are cryptographic protocols that allow one party (the prover) to prove to another party (the verifier) that a statement is true without revealing any additional information beyond the validity of the statement itself.
@@ -22,19 +24,45 @@ The protocol uses zk-SNARKs (Zero-Knowledge Succinct Non-Interactive Argument of
 
 ## How Shielding Works
 
-Shielding is the process of transferring assets from a public address to a private one, referred to as a `0zk` address.
+Shield transactions are executed publicly, using a public wallet. 
 
-When a user shields an asset:
+Under the hood, the shield action sends ERC-20 tokens into the RAILGUN contract, where they are associated with a RAILGUN Wallet and a private balance. Once shielded, the owning RAILGUN Wallet can initiate private transfers and cross-contract calls to interact with external smart contracts.
 
-1. The public address sends a shielding transaction with:
-   - The asset address.
-   - The amount (for ERC-20).
-   - A one-time-use commitment.
-2. This data is hashed into a **note** using cryptographic functions.
-3. The note is inserted into a **Merkle Tree**, stored within the protocol smart contract.
-4. A `Shield` event is emitted, recording the transaction on-chain but without revealing private data such as balance or destination.
+Shielding actions incur a 0.25% fee on the amount of tokens shielded. This fee rate is subject to change by RAILGUN DAO. After tokens are shielded, private transfers incur no fees.
 
-Once in the private set, these tokens are no longer visible in the user's public wallet, and all future interactions are executed anonymously.
+NOTE: Do not shield rebase tokens into RAILGUN, as these are not supported. For a list of rebase tokens, see Rebase Token List (Coingecko).
+
+## PPOI (Proof of Personhood of Interest) and Compliant Privacy
+
+Railgun implements **compliant privacy** through PPOI (Proof of Personhood of Interest), ensuring that privacy features align with regulatory requirements while maintaining user confidentiality.
+
+### What is PPOI?
+
+PPOI is a privacy-preserving compliance mechanism that:
+
+- **Verifies Personhood**: Confirms that users are real individuals without revealing their identity
+- **Enables Compliance**: Allows for regulatory oversight while maintaining privacy
+- **Prevents Abuse**: Deters illicit activities while preserving legitimate privacy needs
+
+### 1-Hour Waiting Period
+
+After shielding tokens, users must wait **1 hour** before they can unshield or transfer their private balances. This waiting period serves several important purposes:
+
+- **Regulatory Compliance**: Provides time for necessary compliance checks
+- **Privacy Enhancement**: Adds an additional layer of privacy protection
+- **Risk Mitigation**: Helps prevent rapid movement of funds for illicit purposes
+- **Audit Trail**: Creates a compliance-friendly audit trail without compromising privacy
+
+### Compliant Privacy Benefits
+
+Shroomy's approach to privacy ensures:
+
+- **Regulatory Alignment**: Meets KYC/AML requirements while preserving privacy
+- **Institutional Adoption**: Enables enterprise and institutional use cases
+- **Legal Clarity**: Provides clear compliance frameworks for users and regulators
+- **Privacy Preservation**: Maintains the core benefits of privacy technology
+
+This compliant privacy model makes Shroomy suitable for both individual users and institutional participants who require privacy while maintaining regulatory compliance.
 
 ## Privacy Mechanisms
 
