@@ -1,0 +1,90 @@
+---
+title: "Shielder"
+description: "Understand the shielding process of the Shroomy Protocol"
+---
+
+The Shielder feature enables users to move ERC-20 tokens from their public wallets into a private balance. Once shielded, assets can be used in DeFi applications with enhanced privacy. The shielding mechanism utilizes zero-knowledge proofs and Merkle Tree commitments to ensure user anonymity and transaction confidentiality.
+
+## What is ZKP (Zero-Knowledge Proof)?
+
+Zero-Knowledge Proofs (ZKPs) are cryptographic protocols that allow one party (the prover) to prove to another party (the verifier) that a statement is true without revealing any additional information beyond the validity of the statement itself.
+
+In the context of Shroomy's Shielder:
+
+- **Privacy**: ZKPs enable transactions to be verified as valid without revealing sender, receiver, or amount details
+- **Security**: Mathematical guarantees ensure that shielded transactions cannot be forged or double-spent
+- **Efficiency**: Complex cryptographic operations are performed off-chain, with only the proof submitted on-chain
+
+The protocol uses zk-SNARKs (Zero-Knowledge Succinct Non-Interactive Argument of Knowledge), which provide:
+- **Succinct**: Proofs are small and can be verified quickly
+- **Non-Interactive**: No back-and-forth communication needed between prover and verifier
+- **Argument of Knowledge**: Proves that the prover knows the secret inputs without revealing them
+
+## How Shielding Works
+
+Shielding is the process of transferring assets from a public address to a private one, referred to as a `0zk` address.
+
+When a user shields an asset:
+
+1. The public address sends a shielding transaction with:
+   - The asset address.
+   - The amount (for ERC-20).
+   - A one-time-use commitment.
+2. This data is hashed into a **note** using cryptographic functions.
+3. The note is inserted into a **Merkle Tree**, stored within the protocol smart contract.
+4. A `Shield` event is emitted, recording the transaction on-chain but without revealing private data such as balance or destination.
+
+Once in the private set, these tokens are no longer visible in the user's public wallet, and all future interactions are executed anonymously.
+
+## Privacy Mechanisms
+
+- **Notes**: Cryptographic commitments created from input data. Cannot be reverse-engineered to reveal original information.
+- **Merkle Tree**: Used to batch and track all shielded notes. New shieldings generate a new leaf, maintaining an updated Merkle Root.
+- **Nullifiers**: Prevent double-spending by marking spent notes as used. All transactions are verified with zk-SNARK proofs.
+
+## Anonymity Set and Privacy Strength
+
+The anonymity set represents the pool of all possible senders/receivers for any given transaction. In Shroomy's Shielder, your privacy is directly tied to the size and activity of this anonymity set.
+
+### How Anonymity Sets Work
+
+When you perform a shielded transaction, you're essentially "hiding in a crowd" of all other users who have also shielded assets. The larger this crowd (anonymity set), the more difficult it becomes to trace your specific transactions.
+
+- The anonymity set becomes stronger as more people use the Shielder
+- Each new user who shields assets increases the privacy protection for all existing users
+- Higher transaction volume creates more "noise" that makes correlation attacks harder
+
+### Privacy Limitations and Best Practices
+
+While ZKPs provide strong cryptographic privacy, transaction correlation is still possible through external analysis. Here are essential best practices to maximize your privacy:
+
+#### Timing Considerations
+- **Wait Between Transactions**: Avoid immediately unshielding the same amount you just shielded
+- **Randomize Intervals**: Don't establish predictable patterns in your transaction timing
+- **Consider Network Activity**: Higher network activity periods provide better privacy
+
+#### Amount Patterns
+- **Avoid Identical Amounts**: Don't shield and unshield the exact same amounts, especially in quick succession
+- **Use Round Numbers Sparingly**: Round amounts are easier to correlate across transactions
+- **Mix Different Amounts**: Consider shielding multiple different amounts to break patterns
+
+#### Behavioral Patterns
+- **Diversify Usage**: Don't always use the same addresses for shielding/unshielding
+- **Avoid Predictable Patterns**: Don't shield on the same day/time regularly
+- **Consider Amount Ranges**: Use varying amounts within reasonable ranges for your use case
+
+#### Advanced Privacy Tips
+- **Layer Privacy**: Combine Shielder with other privacy tools when possible
+- **Monitor Network Activity**: Higher usage periods provide better anonymity
+- **Educate Others**: Encourage adoption - more users mean stronger privacy for everyone
+
+### Privacy vs. Convenience Trade-offs
+
+Remember that maximum privacy often requires some inconvenience. The key is finding the right balance for your specific needs:
+
+- **High Privacy**: Follow all best practices, even if inconvenient
+- **Medium Privacy**: Follow core practices (timing, amounts) but accept some correlation risk
+- **Basic Privacy**: Use Shielder for basic privacy while maintaining convenience
+
+The beauty of Shroomy's Shielder is that even basic usage provides significant privacy improvements over transparent blockchain transactions, while following best practices can provide near-optimal privacy protection.
+
