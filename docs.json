@@ -20,12 +20,22 @@
               "liquidations",
               "staking",
               "revenue-distribution",
-              "risk-explainer",
-              "locker",
-              "airdrop",
-              "shielder",
-              "whisper",
-              "contracts"
+              "whisper"
+            ]
+          },
+          {
+            "group": "Public Goods",
+            "pages": [
+              "public-goods/locker",
+              "public-goods/airdrop",
+              "public-goods/shielder"
+            ]
+          },
+          {
+            "group": "Security",
+            "pages": [
+              "security/contracts",
+              "security/risk-explainer"
             ]
           }
         ]
