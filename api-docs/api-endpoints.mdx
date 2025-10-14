@@ -22,7 +22,7 @@ The request schema for `/swap/v1/price` is identical to `/swap/v1/quote`, with a
 | **takerAddress** *(optional)* | Address that will execute the trade. Providing this value improves accuracy of gas and fee estimates. |
 | **excludedSources** *(optional)* | Comma-separated list of liquidity sources to exclude (e.g., `Uniswap,SushiSwap`). Cannot be used with `includedSources`. |
 | **includedSources** *(optional)* | Comma-separated list of liquidity sources to include. Cannot be used with `excludedSources`. |
-| **integratorPercentageFee** *(optional)* | Fee percentage charged by the integrator. Example: 1% → `0.01`, 0.1% → `0.001`, 0.025% → `0.00025`. |
+| **integratorPercentageFee** *(optional)* | Fee percentage charged by the integrator. Example: 1% → `0.01`, 0.1% → `0.001`, 0.025% → `0.00025`. The base integrator fee is 0.1%. |
 | **integratorRecipientAddress** *(optional)* | Address on ink to receive the integrator fee. Must be used together with `integratorPercentageFee`. |
 
 ### Response Schema
