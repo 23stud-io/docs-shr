@@ -1,0 +1,102 @@
+---
+title: 'API Endpoints'
+description: 'Understand the API endpoints of the Shroomy Protocol'
+---
+
+The `/swap/v1/price` endpoint returns an indicative price for a token swap transaction.
+Unlike `/swap/v1/quote`, this endpoint does **not** produce an executable transaction payload. Instead, it provides pricing and route information equivalent to what a `/swap/v1/quote` call would return.
+This endpoint is typically used for price discovery, user interface previews, or Request-for-Quote (RFQ) scenarios where only indicative pricing is required.
+
+### Request Schema
+
+The request schema for `/swap/v1/price` is identical to `/swap/v1/quote`, with a few exceptions that apply uniformly across all supported chains.
+
+**Query Parameters**
+
+| Parameter | Description |
+| --- | --- |
+| **sellToken** | The ERC20 token address of the token being sold. Always use the full contract address rather than a symbol (e.g., `ETH`) to ensure correct identification. |
+| **buyToken** | The ERC20 token address of the token being purchased. Use the contract address rather than a symbol. |
+| **sellAmount** *(optional)* | Amount of `sellToken` (in base units) to sell. |
+| **slippagePercentage** *(optional, default = 0.01)* | Maximum acceptable slippage for the output token if `sellAmount` is provided, or for the input token if `buyAmount` is provided. Defaults to 1% if unspecified. |
+| **takerAddress** *(optional)* | Address that will execute the trade. Providing this value improves accuracy of gas and fee estimates. |
+| **excludedSources** *(optional)* | Comma-separated list of liquidity sources to exclude (e.g., `Uniswap,SushiSwap`). Cannot be used with `includedSources`. |
+| **includedSources** *(optional)* | Comma-separated list of liquidity sources to include. Cannot be used with `excludedSources`. |
+| **integratorPercentageFee** *(optional)* | Fee percentage charged by the integrator. Example: 1% → `0.01`, 0.1% → `0.001`, 0.025% → `0.00025`. |
+| **integratorRecipientAddress** *(optional)* | Address on ink to receive the integrator fee. Must be used together with `integratorPercentageFee`. |
+
+### Response Schema
+
+The response structure for `/swap/v1/price` is the same as for `/swap/v1/quote`, except that the following fields are **undefined**:
+
+- `guaranteedPrice`
+- `to`
+- `data`
+
+These fields are excluded because `/swap/v1/price` does not return executable transaction data.
+
+**Reponse Fields**
+
+| Field | Description |
+| --- | --- |
+| **price** | The price of `buyToken` in `sellToken`, excluding slippage. If integrator fees are applied, they are reflected here. |
+| **estimatedPriceImpact** | Estimated percentage change in the token price due to trade size. Returns `null` if estimation is unavailable. |
+| **value** | Amount of native token (in wei) required for the transaction. |
+| **gasPrice** | Gas price (in wei) used for transaction estimation. The actual transaction must use a gas price less than or equal to this value. |
+| **gas** | Estimated gas limit for transaction settlement. Requires `takerAddress` for accuracy. |
+| **estimatedGas** | Estimated actual gas usage (typically slightly lower than `gas`). |
+| **protocolFee** | Maximum protocol fee (in wei) applicable to this transaction. |
+| **minimumProtocolFee** | Minimum protocol fee (in wei). |
+| **buyAmount** | Estimated amount of `buyToken` to receive. Excludes liquidity sources that do not support this token pair. |
+| **sellAmount** | Estimated amount of `sellToken` to sell. Useful for on-chain source validation. |
+| **sources** | Breakdown of `buyAmount` or `sellAmount` across individual liquidity sources. |
+| **buyTokenAddress** | Contract address of the token being purchased. |
+| **sellTokenAddress** | Contract address of the token being sold. |
+| **allowanceTarget** | Contract address requiring token approval for swap execution. Null address indicates a native token swap. |
+| **sellTokenToEthRate** | Exchange rate between the native token (e.g., ETH equivalent) and `sellToken`. |
+| **buyTokenToEthRate** | Exchange rate between the native token and `buyToken`. |
+
+### Example
+
+**Request**
+
+Retrieve the indicative price for selling **WETH** to buy **feUSD** on the ink network.
+
+```bash
+curl "https://api.shroomy.io/swap/v1/price?sellToken=0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee&buyToken=0x0c5E2D1C98cd265C751e02F8F3293bC5764F9111&sellAmount=1000000000000000000" \
+  --header "api-key: <API_KEY>"
+
+```
+
+**Response**
+
+```json
+{
+  "chainId": 57073,
+  "price": "36.749874001264005",
+  "estimatedPriceImpact": "0",
+  "value": "600000000000000000",
+  "gasPrice": "47500000",
+  "gas": "389135",
+  "estimatedGas": "389135",
+  "protocolFee": "0",
+  "minimumProtocolFee": "0",
+  "buyTokenAddress": "0x0c5E2D1C98cd265C751e02F8F3293bC5764F9111",
+  "buyAmount": "22049924400758403000",
+  "sellTokenAddress": "0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
+  "sellAmount": "600000000000000000",
+  "sources": [],
+  "orders": [],
+  "allowanceTarget": "0x0000000000000000000000000000000000000000",
+  "sellTokenToEthRate": "1",
+  "buyTokenToEthRate": "35.297931189190104285",
+  "expectedSlippage": null
+}
+
+```
+
+### Notes
+
+- `/swap/v1/price` is intended for **read-only** use and should not be used to execute trades directly.
+- For executable swap data, use the `/swap/v1/quote` endpoint.
+- Providing a `takerAddress` parameter improves estimation accuracy for gas and protocol fees.

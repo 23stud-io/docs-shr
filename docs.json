@@ -32,6 +32,13 @@
             ]
           },
           {
+            "group": "API",
+            "pages": [
+              "api-docs/api-overview",
+              "api-docs/api-endpoints"
+            ]
+          },
+          {
             "group": "Security",
             "pages": [
               "security/contracts",
