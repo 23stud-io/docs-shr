@@ -1,6 +1,6 @@
 ---
 title: 'API Endpoints'
-description: 'Understand the API endpoints of the Shroomy Protocol'
+description: 'Understand the API endpoints of TEPHRA.'
 ---
 
 The `/swap/v1/price` endpoint returns an indicative price for a token swap transaction.
@@ -63,7 +63,7 @@ These fields are excluded because `/swap/v1/price` does not return executable tr
 Retrieve the indicative price for selling **WETH** to buy **SHROOMY** on the ink network.
 
 ```bash
-curl "https://api.shroomy.io/swap/v1/price?sellToken=0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee&buyToken=0x0c5E2D1C98cd265C751e02F8F3293bC5764F9111&sellAmount=1000000000000000000" \
+curl "https://api.tephra.fi/swap/v1/price?sellToken=0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee&buyToken=0x0c5E2D1C98cd265C751e02F8F3293bC5764F9111&sellAmount=1000000000000000000" \
   --header "api-key: <API_KEY>"
 
 ```
