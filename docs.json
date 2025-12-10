@@ -4,7 +4,7 @@
   "name": "Documentation | TEPHRA",
   "colors": {
     "primary": "#D74B2D",
-    "light": "#fff",
+    "light": "#D74B2D",
     "dark": "#D74B2D"
   },
   "favicon": "/favicon.png",
